@@ -34,7 +34,7 @@ oidc_provider_arn = "arn:aws:iam::211125333559:oidc-provider/oidc.eks.us-east-1.
 region = "us-east-1"
 
 ### Use kubectl to manage your cluster and deploy Kubernetes configurations to it.
-aws eks --region us-east-1 update-kubeconfig --name clkg-eks-tceoRkdT
+`aws eks --region us-east-1 update-kubeconfig --name clkg-eks-tceoRkdT`
 
 Added new context arn:aws:eks:us-east-1:211125333559:cluster/clkg-eks-tceoRkdT to C:\Users\Administrator\.kube\config
 
