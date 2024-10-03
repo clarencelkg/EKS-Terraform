@@ -40,10 +40,10 @@ Added new context arn:aws:eks:us-east-1:211125333559:cluster/clkg-eks-tceoRkdT t
 
 ### Verify your cluster
 `kubectl cluster-info`
-
+```sh
 Kubernetes control plane is running at https://9DFE2240E9F2EF80951822A065A69BF5.gr7.us-east-1.eks.amazonaws.com
 CoreDNS is running at https://9DFE2240E9F2EF80951822A065A69BF5.gr7.us-east-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-
+```
 ### Verify all worker nodes are part of the cluster
 `kubectl get nodes`
 NAME                         STATUS   ROLES    AGE     VERSION
