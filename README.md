@@ -27,11 +27,11 @@ Run `terraform plan` to see the configuration it creates when executed.
 ### Output from terraform apply
 Outputs:
 
-cluster_endpoint = "https://9DFE2240E9F2EF80951822A065A69BF5.gr7.us-east-1.eks.amazonaws.com"
+`cluster_endpoint = "https://9DFE2240E9F2EF80951822A065A69BF5.gr7.us-east-1.eks.amazonaws.com"
 cluster_name = "clkg-eks-tceoRkdT"
 cluster_security_group_id = "sg-00d57d9d04ef7330f"
 oidc_provider_arn = "arn:aws:iam::211125333559:oidc-provider/oidc.eks.us-east-1.amazonaws.com/id/9DFE2240E9F2EF80951822A065A69BF5"    
-region = "us-east-1"
+region = "us-east-1"`
 
 ### Use kubectl to manage your cluster and deploy Kubernetes configurations to it.
 `aws eks --region us-east-1 update-kubeconfig --name clkg-eks-tceoRkdT`
