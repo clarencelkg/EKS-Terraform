@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eks-nginx-deployment
+  namespace: eks-sample-app
+  labels:
+    app: eks-sample-linux-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: eks-sample-linux-app
+  template:
+    metadata:
+      labels:
+        app: eks-sample-linux-app
+    spec:
+      # this is a node affinity, which is a way to tell kubernetes that this pod
+      # should be scheduled on a node with specific properties. In this case, we
+      # want to schedule this pod on a node that has an architecture of either
+      # amd64 (x86_64) or arm64. This is because we're using a multi-arch image
+      # that can run on either of those architectures.
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: kubernetes.io/arch
+                operator: In
+                values:
+                - amd64
+                - arm64
+      containers:
+      - name: nginx
+        #image: <ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/<REPOSITORY_NAME>:<TAG>
+        image: 211125333559.dkr.ecr.us-east-1.amazonaws.com/clowkg:latest
+        ports:
+        - name: http
+          containerPort: 80
+        imagePullPolicy: IfNotPresent
+      nodeSelector:
+        kubernetes.io/os: linux
