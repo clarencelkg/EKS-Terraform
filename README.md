@@ -173,12 +173,12 @@ Events:
 
 ### From the Pod shell, view the output from the web server that was installed with your deployment in a previous step
 `curl eks-sample-linux-service`
-`<html>
+<html>
     <body>
         <h1>Clarence's Website</h1>
         <p>Hi, I'm Clarence.</p>
     </body>
- </html>`
+ </html>
 
 ### From the Pod shell, view the DNS server for the Pod
 `cat /etc/resolv.conf`
