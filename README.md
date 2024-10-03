@@ -39,23 +39,23 @@ region = "us-east-1"
 Added new context arn:aws:eks:us-east-1:211125333559:cluster/clkg-eks-tceoRkdT to C:\Users\Administrator\.kube\config
 
 ### Verify your cluster
-kubectl cluster-info
+`kubectl cluster-info`
 
 Kubernetes control plane is running at https://9DFE2240E9F2EF80951822A065A69BF5.gr7.us-east-1.eks.amazonaws.com
 CoreDNS is running at https://9DFE2240E9F2EF80951822A065A69BF5.gr7.us-east-1.eks.amazonaws.com/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
 ### Verify all worker nodes are part of the cluster
-kubectl get nodes
+`kubectl get nodes`
 NAME                         STATUS   ROLES    AGE     VERSION
 ip-10-0-1-126.ec2.internal   Ready    <none>   7m25s   v1.29.8-eks-a737599
 ip-10-0-2-123.ec2.internal   Ready    <none>   7m26s   v1.29.8-eks-a737599
 
 ### To deploy a sample application, create a namespace
-kubectl create namespace eks-sample-app
+`kubectl create namespace eks-sample-app`
 namespace/eks-sample-app created
 
 ### Verify namespace is created
-kubectl get ns
+`kubectl get ns`
 NAME              STATUS   AGE
 default           Active   13m
 eks-sample-app    Active   10s
@@ -64,14 +64,14 @@ kube-public       Active   13m
 kube-system       Active   13m
 
 ### Create a Kubernetes and services deployment
-eks-nginx-deployment.yaml
-services.yaml
+`eks-nginx-deployment.yaml` 
+`services.yaml`
 
 ### Apply the deployment manifest to your cluster
-kubectl apply -f eks-nginx-deployment.yaml services.yaml
+`kubectl apply -f eks-nginx-deployment.yaml services.yaml`
 
 ### View all resources that exist in the eks-sample-app namespace
-kubectl get all -n eks-sample-app
+`kubectl get all -n eks-sample-app`
 NAME                                        READY   STATUS    RESTARTS   AGE
 pod/eks-nginx-deployment-684bdcbff7-5q4vx   1/1     Running   0          15s
 pod/eks-nginx-deployment-684bdcbff7-gpxg6   1/1     Running   0          15s
@@ -87,7 +87,7 @@ NAME                                              DESIRED   CURRENT   READY   AG
 replicaset.apps/eks-nginx-deployment-684bdcbff7   3         3         3       17s
 
 ### View the details of the deployed service
-kubectl -n eks-sample-app describe service eks-sample-linux-service
+`kubectl -n eks-sample-app describe service eks-sample-linux-service`
 Name:                     eks-sample-linux-service
 Namespace:                eks-sample-app
 Labels:                   app=eks-sample-linux-app
@@ -112,7 +112,7 @@ Events:
   Normal  EnsuredLoadBalancer   96s   service-controller  Ensured load balancer
 
 ### View the details of one of the Pods listed in the output
-kubectl -n eks-sample-app describe pod eks-nginx-deployment-684bdcbff7-5q4vx    
+`kubectl -n eks-sample-app describe pod eks-nginx-deployment-684bdcbff7-5q4vx`    
 Name:             eks-nginx-deployment-684bdcbff7-5q4vx
 Namespace:        eks-sample-app
 Priority:         0
@@ -169,10 +169,10 @@ Events:
   Normal  Started    3m49s  kubelet            Started container nginx
 
 ### Run a shell on the Pod that you described in the previous step
-kubectl exec -it eks-nginx-deployment-684bdcbff7-5q4vx -n eks-sample-app -- /bin/bash
+`kubectl exec -it eks-nginx-deployment-684bdcbff7-5q4vx -n eks-sample-app -- /bin/bash`
 
 ### From the Pod shell, view the output from the web server that was installed with your deployment in a previous step
-curl eks-sample-linux-service
+`curl eks-sample-linux-service`
 <html>
     <body>
         <h1>Clarence's Website</h1>
@@ -181,7 +181,7 @@ curl eks-sample-linux-service
 </html>
 
 ### From the Pod shell, view the DNS server for the Pod
-cat /etc/resolv.conf
+`cat /etc/resolv.conf`
 search eks-sample-app.svc.cluster.local svc.cluster.local cluster.local ec2.internal
 nameserver 172.20.0.10
 options ndots:5
@@ -191,7 +191,7 @@ options ndots:5
 ![alt text](image-1.png)
 
 ### Once you are done destroy the resources you created in this tutorial to avoid incurring extra charges
-terraform destroy
+`terraform destroy`
 
 
 
